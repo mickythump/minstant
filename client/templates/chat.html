@@ -1,0 +1,41 @@
+<!-- Top level template for the chat page -->
+<template name="chat_page">
+	<h2>Type in the box below to send a message!</h2>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="well well-lg">
+			{{#each messages}}
+			{{> chat_message}}
+      {{/each}}
+			</div>
+		</div>
+	</div>
+    <div class="row">
+		<div class="col-md-12">
+			<form class="js-send-chat">
+			<input class="input" type="text" name="chat" placeholder="type a message here...">
+			<button class="btn btn-default">send</button>
+		</form>
+		</div>
+	</div>
+</template>
+
+<!-- simple template that displays a message -->
+<template name="chat_message">
+	<div class="container">
+    <div class="media">
+      <div class="media-left media-top">
+        <a href="#">
+          <img class="media-object avatar_img" src="/{{getAvatar userId}}" alt="my avatar">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{getUsername userId}} said: </h4>
+				{{#emoji}}
+				{{text}}
+				{{/emoji}}
+        <br>
+      </div>
+    </div>
+  </div>
+</template>
